@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Livres</title>
+</head>
+<body>
+    <h1>Book List</h1>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publication Date</th>
+            <th>Category</th>
+            <th>Link</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publication_date }}</td>
+            <td>{{ book.category.category_name }}</td>
+            <td><a href="{% url 'book_borrowings' book.id %}">Afficher Emprunts</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

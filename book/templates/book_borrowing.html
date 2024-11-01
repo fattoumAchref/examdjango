@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Emprunts pour {{ book.title }}</title>
+</head>
+<body>
+    <h1>Emprunts pour {{ book.title }}</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% else %}
+        <table border="1">
+            <tr>
+                <th>Client</th>
+                <th>Date d'emprunt</th>
+                <th>Date de retour</th>
+                <th>Statut</th>
+            </tr>
+            {% for borrowing in borrowings %}
+            <tr>
+                <td>{{ borrowing.client }}</td>
+                <td>{{ borrowing.borrowing_date }}</td>
+                <td>{{ borrowing.return_date }}</td>
+                <td>{{ "Retourné" if borrowing.returned else "Non retourné" }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
